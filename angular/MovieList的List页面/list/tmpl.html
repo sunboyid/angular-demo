@@ -1,0 +1,29 @@
+<div>
+    <div ng-if="isWaiting">
+        正在加载中.......
+    </div>
+    <div ng-if="!isWaiting">
+        <div>
+            <a href="#/list/in_theaters/1">正在热映</a>
+            <a href="#/list/coming_soon/1">即将上映</a>
+            <a href="#/list/top250/1">Top250</a>
+        </div>
+        <div>当前是第{{routeParams.page}}页，共{{totalPage}}页</div>
+        <div>
+            <a href="#{{prev}}">上一页</a>
+            <a href="#{{next}}">下一页</a>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-xs-4" ng-repeat="subject in listData.subjects">
+                <div class="thumbnail img-thumbnail">
+                    <img ng-src="{{subject.images.large}}"
+                         style="height: 420px;overflow-y: hidden;"
+                         alt="{{subject.title}}">
+                    <div class="caption" style="text-align:center;">
+                        <a ng-href="#/detail/{{subject.id}}">{{subject.title}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

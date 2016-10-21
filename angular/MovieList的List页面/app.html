@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="s7.ml.app">
+<head>
+    <meta charset="UTF-8">
+    <title>电影列表</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<a href="#/list/coming_soon/1">coming soon</a>
+<a href="#/detail/26826009">detail</a>
+<div ng-view>
+
+</div>
+
+<script src="../angular.js"></script>
+<script src="../angular-route.js"></script>
+<script src="services/jsonp.js"></script>
+<script src="model.js"></script>
+<script src="detail/ctrl.js"></script>
+<script src="list/ctrl.js"></script>
+<script>
+    var app = angular.module('s7.ml.app',['ngRoute','s7.ml.detail','s7.ml.list']);
+    app.config(function($routeProvider){
+        $routeProvider
+                .when('/detail/:id',{
+                    controller:'DetailController',
+                    templateUrl:'detail/tmpl.html',
+
+                })
+                .when('/list/:fenlei/:page',{
+                    controller:'ListController',
+                    templateUrl:'list/tmpl.html',
+
+                })
+                .otherwise({
+                    template:"<div>您访问的页面不存在</div>"
+                })
+    })
+</script>
+</body>
+</html>
